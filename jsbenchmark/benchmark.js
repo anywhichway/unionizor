@@ -38,7 +38,7 @@
 					showArguments: false,
 					tests: {
 						lodash: (a1,a2) => { return _.union(a1,a2).length; },
-						unionizor: (a1,a2) => { return unionizorPrimitve(a1,a2).length; },
+						unionizor: (a1,a2) => { return unionizorPrimitive(a1,a2).length; },
 						uniqs: (a1,a2) => { return uniqs(a1,a2).length; }
 					}
 				},
