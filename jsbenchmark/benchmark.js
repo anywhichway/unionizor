@@ -16,7 +16,7 @@
 	
 	
 	JSBenchmark.import(imports).then(() => {
-		const unionizorPrimitive = unionizor(),
+		var unionizorPrimitive = unionizor(),
 			unionizorObject = unionizor(true);
 		
 		function uniqs() {
