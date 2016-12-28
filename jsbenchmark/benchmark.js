@@ -2,17 +2,17 @@
 	
 	var imports = ["unionizor.js"];
 	
-	var expected = 100000,
+	var expected = 5000,
 		args1 = [];
-	for(var i=0;i<100000;i++) {
+	for(var i=0;i<5000;i++) {
 		args1.push(i);
 	}
-	var args2 = args1.slice(50000);
+	var args2 = args1.slice(2500);
 	var oargs1 = [];
-	for(var i=0;i<100000;i++) {
+	for(var i=0;i<5000;i++) {
 		oargs1.push({i:i});
 	}
-	var oargs2 = oargs1.slice(50000);
+	var oargs2 = oargs1.slice(2500);
 	
 	
 	JSBenchmark.import(imports).then(() => {
