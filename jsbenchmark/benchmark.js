@@ -2,16 +2,6 @@
 	
 	var imports = ["unionizor.js"];
 	
-	const unionizorPrimitive = unionizor(),
-		unionizorObject = unionizor(true);
-	
-	function uniqs() {
-	  var list = Array.prototype.concat.apply([], arguments);
-	  return list.filter(function(item, i) {
-	    return i == list.indexOf(item);
-	  });
-	};
-	
 	var expected = 100000,
 		args1 = [];
 	for(var i=0;i<100000;i++) {
@@ -26,8 +16,16 @@
 	
 	
 	JSBenchmark.import(imports).then(() => {
-		var intersectorPrimitve = intersector(),
-			intersectorObject = intersector(true);
+		const unionizorPrimitive = unionizor(),
+			unionizorObject = unionizor(true);
+		
+		function uniqs() {
+			var list = Array.prototype.concat.apply([], arguments);
+			return list.filter(function(item, i) {
+				return i == list.indexOf(item);
+			});
+		}
+			
 		JSBenchmark.run({
 			name: "Array Union",
 			description: "Test various ways of creating array uinions",
