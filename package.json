@@ -1,0 +1,43 @@
+{
+  "name": "unionizor",
+  "version": "1.0.0",
+  "description": "Superfast union supporting primitives and objects. In the age of big data, you need it.",
+  "main": "index.js",
+  "client": "./browser/union.js",
+  "reveal": true,
+  "isomorphic": true,
+  "scripts": {
+    "test": "istanbul cover node_modules/mocha/bin/_mocha --report lcov -- -R spec",
+    "minify": "minify browser/unionizor.js > browser/unionizor.min.js",
+    "prepublish": "cp index.js browser/unionizor.js && cp index.js jsbenchmark/unionizor.js && npm run minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anywhichway/intersector.git"
+  },
+  "keywords": [
+    "union",
+    "lodash",
+    "uniqs"
+  ],
+  "author": "Simon Y. Blackwell <syblackwell@anywhichway.com> (http://www.github.com/anywhichway)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anywhichway/union/issues"
+  },
+  "homepage": "https://github.com/anywhichway/union#readme",
+  "devDependencies": {
+    "blanket": "^1.2.3",
+    "chai": "^3.4.1",
+    "istanbul": "^0.4.2",
+    "codeclimate-test-reporter": "^0.2.0",
+    "mocha": "^2.3.4",
+     "minify": "^2.0.8",
+     "benchmark": "^2.1.3",
+     "lodash": "^4.17.3",
+     "uniqs": "^2.0.0"
+  },
+  "dependencies": {
+    
+  }
+}
