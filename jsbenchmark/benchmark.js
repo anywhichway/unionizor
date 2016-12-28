@@ -28,7 +28,7 @@
 			
 		JSBenchmark.run({
 			name: "Array Union",
-			description: "Test various ways of creating array uinions",
+			description: "Test various ways of creating array unions",
 			keywords: ["union","lodash","unionizor","uniqs"],
 			suites: {
 				primitive: {
