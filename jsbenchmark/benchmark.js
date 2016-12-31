@@ -34,7 +34,7 @@
 				primitive: {
 					arguments: [args1,args2],
 					expected: expected,
-					pretest: true,
+					pretest: false,
 					showArguments: false,
 					tests: {
 						lodash: (a1,a2) => { return _.union(a1,a2).length; },
@@ -45,7 +45,7 @@
 				object: {
 					arguments: [oargs1,oargs2],
 					expected: expected,
-					pretest: true,
+					pretest: false,
 					showArguments: false,
 					tests: {
 						lodash: (a1,a2) => { return _.union(a1,a2).length; },

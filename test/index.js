@@ -16,10 +16,12 @@ var o1 = {o:1},
 
 describe("Test",function() {
 	it("primitive",function() {
-		var result = primitiveUnion([1,2,3],[3,2]);
-		expect(result.length).to.equal(3);
+		var result = primitiveUnion([1,2,3],[3,2,4]);
+		expect(result.length).to.equal(4);
 		expect(result[0]).to.equal(1);
 		expect(result[1]).to.equal(2);
+		expect(result[2]).to.equal(3);
+		expect(result[3]).to.equal(4);
 	});
 	it("object with primitives",function() {
 		var result = objectUnion([1,2,3],[3,2]);
