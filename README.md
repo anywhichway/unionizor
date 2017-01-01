@@ -13,7 +13,7 @@ uniqsObject x 0.20 ops/sec ±3.78% (5 runs sampled)
 Fastest is unionizorPrimitive
 ```
 
-See benchmarks at [JSBenchmarks](http://www.jsbenchmarks.com/index.html?anywhichway/unionizor/master/jsbenchmark/benchmark.js).
+See benchmarks at [JSBenchmarks](http://www.jsbenchmarks.com/index.html?anywhichway/union/master/benchmark.js).
 
 # Installing
 
@@ -56,6 +56,8 @@ In browser:
 ```
 
 # Updates (reverse chronological order)
+
+2017-01-01 v1.0.0 - Externalized benchmark.
 
 2016-12-27 v1.0.0 - Initial public release.
 
