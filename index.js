@@ -72,6 +72,6 @@ SOFTWARE.
 	if(typeof(this.exports)!=="undefined") {
 		this.exports = unionizor;
 	} else {
-		this.unionizor = unionizor;
+		this.unionizor = unionizor; 
 	}
 }).call(typeof(window)!=="undefined" ? window : (typeof(this.module)!=="undefined" ? module : this));
