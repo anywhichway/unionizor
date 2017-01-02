@@ -20,25 +20,53 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
 (function() {
-	function unionizor(objects) {
+	function unionizor(o) {
+		var ot = (!o ? 0 : (typeof(o)==="boolean" ? -1 : 1)),
+			s = (typeof(o)==="boolean" ? new Set() : {});
 		return function() {
-			var set = (objects ? new Set() : {}),
-				results = [];
-			for(var i=0;i<arguments.length;i++) {
-				var array = arguments[i];
-				for(var j=0;j<array.length;j++) {
-					var value = array[j];
-					if((objects && !set.has(value)) || (!objects && !set.hasOwnProperty(value))) {
-						if(objects) {
-							set.add(value);
-						} else {
-							set[value] = value;
-						}
-						results.push(value);
+			var r = [],
+				a = [];
+			a = a.concat.apply(a,arguments);
+			var len = a.length;
+			if(ot===-1) {
+				for(var i=0;i<len;i++) {
+					var v = a[i];
+					if(!s.has(v)) {
+						s.add(v);
+						r.push(v);
 					}
 				}
+			} else if(ot===0) {
+				for(var i=0;i<len;i++) {
+					var v = a[i], t = typeof(v);
+					if(s[v]!==t) {
+						s[v]=t;
+						r.push(v);
+					}
+				}
+			} else {
+				for(var i=0;i<len;i++) {
+					var v = a[i], t = typeof(v);
+					if(v && t==="object") {
+						if(s[v[o]]!==t) {
+							s[v[o]]=t;
+							r.push(v);
+						}
+					} else {
+						if(s[v]!==t) {
+							s[v]=t;
+							r.push(v);
+						}
+					}
+					
+				}
 			}
-			return results;
+			if(ot===-1) {
+				s.clear();
+			} else {
+				s = {};
+			}
+			return r;
 		}
 	}
 	if(typeof(module)!=="undefined") {
