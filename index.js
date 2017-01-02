@@ -70,8 +70,10 @@ SOFTWARE.
 		}
 	}
 	if(typeof(this.exports)!=="undefined") {
+		console.log("assigning export")
 		this.exports = unionizor;
 	} else {
+		console.log("assigning this")
 		this.unionizor = unionizor; 
 	}
 }).call(typeof(window)!=="undefined" ? window : (typeof(this.module)!=="undefined" ? module : this));
