@@ -71,6 +71,7 @@ SOFTWARE.
 	}
 	if(typeof(module)!=="undefined") {
 		module.exports = unionizor;
+		this.unionizor = unionizor;
 	} else {
 		this.unionizor = unionizor;
 	}
