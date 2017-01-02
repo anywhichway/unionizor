@@ -74,4 +74,4 @@ SOFTWARE.
 	} else {
 		this.unionizor = unionizor;
 	}
-}).call((typeof(window)!=="undefined" ? window : (typeof(module)!=="undefined" ? module : this));
+}).call(typeof(window)!=="undefined" ? window : (typeof(this.module!)!=="undefined" ? module : this));
