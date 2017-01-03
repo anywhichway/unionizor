@@ -69,11 +69,9 @@ SOFTWARE.
 			return r;
 		}
 	}
-	if(typeof(this.exports)!=="undefined") {
-		console.log("assigning export");
-		this.exports = unionizor;
+	if(typeof(this.module)!=="undefined") {
+		this.module.exports = unionizor;
 	} else {
-		console.log("assigning this");
 		this.unionizor = unionizor; 
 	}
-}).call(typeof(window)!=="undefined" ? window : (typeof(this.module)!=="undefined" ? module : this));
+}).call(this);
