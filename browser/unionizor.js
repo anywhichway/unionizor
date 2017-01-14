@@ -69,10 +69,9 @@ SOFTWARE.
 			return r;
 		}
 	}
-	if(typeof(module)!=="undefined") {
-		module.exports = unionizor;
-		this.unionizor = unionizor;
+	if(typeof(this.module)!=="undefined") {
+		this.module.exports = unionizor;
 	} else {
-		this.unionizor = unionizor;
+		this.unionizor = unionizor; 
 	}
 }).call(this);
