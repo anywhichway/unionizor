@@ -21,32 +21,32 @@ SOFTWARE.
  */
 (function() {
 	function unionizor(o) {
-		var ot = (!o ? 0 : (typeof(o)==="boolean" ? -1 : 1)),
+		let ot = (!o ? 0 : (typeof(o)==="boolean" ? -1 : 1)),
 			s = (typeof(o)==="boolean" ? new Set() : {});
 		return function() {
-			var r = [],
+			let r = [],
 				a = [];
 			a = a.concat.apply(a,arguments);
-			var len = a.length;
+			let len = a.length;
 			if(ot===-1) {
-				for(var i=0;i<len;i++) {
-					var v = a[i];
+				for(let i=0;i<len;i++) {
+					let v = a[i];
 					if(!s.has(v)) {
 						s.add(v);
 						r.push(v);
 					}
 				}
 			} else if(ot===0) {
-				for(var i=0;i<len;i++) {
-					var v = a[i], t = typeof(v);
+				for(let i=0;i<len;i++) {
+					let v = a[i], t = typeof(v);
 					if(s[v]!==t) {
 						s[v]=t;
 						r.push(v);
 					}
 				}
 			} else {
-				for(var i=0;i<len;i++) {
-					var v = a[i], t = typeof(v);
+				for(let i=0;i<len;i++) {
+					let v = a[i], t = typeof(v);
 					if(v && t==="object") {
 						if(s[v[o]]!==t) {
 							s[v[o]]=t;
@@ -67,10 +67,10 @@ SOFTWARE.
 				s = {};
 			}
 			return r;
-		}
+		};
 	}
-	if(typeof(this.module)!=="undefined") {
-		this.module.exports = unionizor;
+	if(typeof(module)!=="undefined") {
+		module.exports = unionizor;
 	} else {
 		this.unionizor = unionizor; 
 	}

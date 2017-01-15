@@ -10,7 +10,8 @@ if(typeof(window)==="undefined") {
 }
 
 var primitiveUnion = unionizor(),
-	objectUnion = unionizor(true);
+	objectUnion = unionizor(true),
+	keyedObjectUnion = unionizor("o");
 
 var o1 = {o:1},
 	o2 = {o:2},
@@ -36,6 +37,10 @@ describe("Test",function() {
 	});
 	it("lodash objects",function() {
 		var result = _.union([o3,o1,o2,o3],[o3,"2",o4]);
+		expect(result.length).to.equal(5);
+	});
+	it("keyed objects",function() {
+		var result = keyedObjectUnion([o3,o1,o2,o3],[o3,"2",o4]);
 		expect(result.length).to.equal(5);
 	});
 });

@@ -1,6 +1,9 @@
 # unionizor
 Superfast union supporting primitives and objects. In the age of big data, you need it.
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3ed16b53c5014f9d9cbf4bf3ceab432c)](https://www.codacy.com/app/syblackwell/unionizor?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=anywhichway/unionizor&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/3ed16b53c5014f9d9cbf4bf3ceab432c)](https://www.codacy.com/app/syblackwell/unionizor?utm_source=github.com&utm_medium=referral&utm_content=anywhichway/unionizor&utm_campaign=Badge_Coverage)
+
 See browser benchmarks at [JSBenchmarks](http://www.jsbenchmarks.com/index.html?anywhichway/union/master/benchmark.js).
 
 `lodash` appears to be faster than `unionizor` in Node.js.
@@ -51,6 +54,8 @@ In browser:
 ```
 
 # Updates (reverse chronological order)
+
+2017-01-15 v1.0.3 - Added Codacy quality checks and badges. Replace `var` with `let`. Addressed a package loading issues that impacted testing.
 
 2017-01-02 v1.0.2 - Previous versions would treat string equivalents in primitve arrays the same, e.g. 2 would equal "2". Also,
 improved performance and added the option to pass in an object key.
