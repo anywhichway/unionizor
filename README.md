@@ -18,7 +18,7 @@ Download and use the browser files from the browser directory.
 
 # Using
 
-`unionizor(booleanOrUniqueKeyProperty=false)` is a function that returns another function configured to do array unions. It takes one optional argument booleanOrUniqueKeyProperty that defaults to `false'. If booleanOrUniqueKeyProperty=false the intersection is optimized for primitive data types and will run much faster. If typeof(booleanOrUniqueKeyProperty)==="string" it is assumed to be a unique key on all objects in the arrays, primtives will still behandled. This will run the second fastest. If booleanOrUniqueKeyProperty is otherwise not equal to zero, then a Set will be used internally and the algorithm will be slower, although still faster than many others in a browser. 
+`unionizor(booleanOrUniqueKeyProperty=false)` is a function that returns another function configured to do array unions. It takes one optional argument booleanOrUniqueKeyProperty that defaults to `false'. If booleanOrUniqueKeyProperty=false the intersection is optimized for primitive data types and will run much faster. If typeof(booleanOrUniqueKeyProperty)==="string" it is assumed to be a unique key on all objects in the arrays, primtives will still be handled. This will run the second fastest. If booleanOrUniqueKeyProperty is otherwise not equal to zero, then a Set will be used internally and the algorithm will be slower, although still faster than many others in a browser. 
 
 
 In NodeJS:
