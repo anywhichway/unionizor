@@ -1,4 +1,7 @@
 # unionizor
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3ed16b53c5014f9d9cbf4bf3ceab432c)](https://www.codacy.com/app/syblackwell/unionizor?utm_source=github.com&utm_medium=referral&utm_content=anywhichway/unionizor&utm_campaign=badger)
+
 Superfast union supporting primitives and objects. In the age of big data, you need it.
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/3ed16b53c5014f9d9cbf4bf3ceab432c)](https://www.codacy.com/app/syblackwell/unionizor?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=anywhichway/unionizor&amp;utm_campaign=Badge_Grade)
