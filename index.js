@@ -1,5 +1,5 @@
 /* MIT License
-Copyright (c) 2016 Simon Y. Blackwell
+Copyright (c) 2016-2023 Simon Y. Blackwell
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -18,60 +18,126 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
- */
-(function() {
-	function unionizor(o) {
-		let ot = (!o ? 0 : (typeof(o)==="boolean" ? -1 : 1)),
-			s = (typeof(o)==="boolean" ? new Set() : {});
-		return function() {
-			let r = [],
-				a = [];
-			a = a.concat.apply(a,arguments);
-			let len = a.length;
-			if(ot===-1) {
-				for(let i=0;i<len;i++) {
-					let v = a[i];
-					if(!s.has(v)) {
-						s.add(v);
-						r.push(v);
-					}
-				}
-			} else if(ot===0) {
-				for(let i=0;i<len;i++) {
-					let v = a[i], t = typeof(v);
-					if(s[v]!==t) {
-						s[v]=t;
-						r.push(v);
-					}
-				}
-			} else {
-				for(let i=0;i<len;i++) {
-					let v = a[i], t = typeof(v);
-					if(v && t==="object") {
-						if(s[v[o]]!==t) {
-							s[v[o]]=t;
-							r.push(v);
-						}
-					} else {
-						if(s[v]!==t) {
-							s[v]=t;
-							r.push(v);
-						}
-					}
-					
-				}
-			}
-			if(ot===-1) {
-				s.clear();
-			} else {
-				s = {};
-			}
-			return r;
-		};
-	}
-	if(typeof(module)!=="undefined") {
-		module.exports = unionizor;
-	} else {
-		this.unionizor = unionizor; 
-	}
-}).call(this);
+ */ function $cf838c15c8b009ba$export$7121fda12bd9139a(objectsMixedOrKey) {
+    const objectkey = typeof objectsMixedOrKey === "string" ? objectsMixedOrKey : false;
+    return (...iterables)=>{
+        const memory = new Set(), results = [];
+        let i = 0, k = 0, length;
+        Object.defineProperty(results, "forEach", {
+            value: (f)=>{
+                let i = 0; // avoid accessing length
+                for (const item of proxy)f(item, i++, proxy);
+            }
+        });
+        Object.defineProperty(results, "map", {
+            value: (f)=>{
+                const result = [];
+                let i = 0; // avoid accessing length
+                for (const item of proxy)result[i] = f(item, i++, proxy);
+                return result;
+            }
+        });
+        Object.defineProperty(results, "reduce", {
+            value: (f, result)=>{
+                let i = 0; // avoid accessing length
+                for (const item of proxy)if (result === undefined) result = item;
+                else result = f(result, item, i++, proxy);
+                return result;
+            }
+        });
+        const proxy = new Proxy(results, {
+            get (target, key) {
+                const type = typeof key;
+                let item = target[key];
+                if (key !== "length" && type !== "symbol") {
+                    if (item != undefined) return item;
+                    if (type === "string") {
+                        const num = parseInt(key);
+                        if (num + "" === key) key = num;
+                    }
+                    if (key < 0 || key === Infinity) throw new RangeError(`${key} is out of range`);
+                }
+                if (key === "length") {
+                    if (length >= 0) return length;
+                    key = Infinity;
+                }
+                if (typeof key === "number") {
+                    if (key >= length) return;
+                    if (key < target.length) return target[key];
+                    const il = iterables.length;
+                    let item;
+                    while(k < il){
+                        let array = iterables[k];
+                        if (!Array.isArray(array)) array = [
+                            ...array
+                        ];
+                        const al = array.length;
+                        while(key >= target.length && i < al){
+                            item = array[i++];
+                            if (objectkey ? !memory.has(item[objectkey]) : !memory.has(item)) {
+                                objectkey ? memory.add(item[objectkey]) : memory.add(item);
+                                target[target.length] = item;
+                            }
+                        }
+                        if (i === al) {
+                            i = 0;
+                            k++;
+                        }
+                        if (key <= target.length) break;
+                    }
+                    if (k === il) length = target.length;
+                    return key === Infinity ? length : item;
+                }
+                if (type === "symbol" && key.toString() === "Symbol(Symbol.iterator)") return ()=>{
+                    if (length >= 0) {
+                        let l = 0;
+                        return {
+                            next () {
+                                while(l < target.length)return {
+                                    value: target[l++]
+                                };
+                                return {
+                                    done: true
+                                };
+                            }
+                        };
+                    }
+                    return {
+                        next () {
+                            while(k < iterables.length){
+                                let array = iterables[k];
+                                if (!Array.isArray(array)) array = [
+                                    ...array
+                                ];
+                                while(i < array.length){
+                                    const item = array[i++], keyed = objectkey && item && typeof item === "object";
+                                    if (keyed ? !memory.has(item[objectkey]) : !memory.has(item)) {
+                                        keyed ? memory.add(item[objectkey]) : memory.add(item);
+                                        target[target.length] = item;
+                                        return {
+                                            value: item
+                                        };
+                                    }
+                                }
+                                if (i === array.length) {
+                                    i = 0;
+                                    k++;
+                                }
+                            }
+                            length = target.length;
+                            return {
+                                done: true
+                            };
+                        }
+                    };
+                };
+                return target[key];
+            }
+        });
+        return proxy;
+    };
+}
+
+
+export {$cf838c15c8b009ba$export$7121fda12bd9139a as unionizer, $cf838c15c8b009ba$export$7121fda12bd9139a as default};
+//# sourceMappingURL=index.js.map
