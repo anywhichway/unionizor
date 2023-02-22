@@ -1,7 +1,6 @@
 # unionizor
 Superfast union supporting Arrays and Iterables containing primitives or objects. In the age of big data, you need it.
 
-
 # Performance
 
 Unionizer is extraordinarily fast. Multiple test runs show `unionizer` is 60-100x faster when accessing the first element of a union,  30-50x faster when accessing the central point of a union, and 10-15% slower than `lodash` when accessing the last item of union but still 10-15% faster than `setUnion`. If you are running a data processing pipeline, time to first response is critical. Secondary access of the same item will be sub millisecond since `unionizer` caches values in an array.
@@ -20,7 +19,7 @@ All approaches have variable speeds due to garbage collection.
 
 Below are results from a sample run:
 
-<samp>
+```
 lodash create 85827 from 6 x 100000: 68.936ms
 lodash access 0: 69.903ms
 lodash access 42913.5: 70.358ms
@@ -41,7 +40,17 @@ unionizer access 42913.5: 0.886ms
 unionizer access 85826: 76.758ms
 unionizer re-access 85826: 0.335ms
 unionizer total: 78.063ms
-</samp>
+```
+
+If you want similar performance for intersection, Cartesian product, or memoizing also see:
+
+- https://github.com/anywhichway/intersector
+- https://github.com/anywhichway/cxproduct
+- https://github.com/anywhichway/nano-memoize
+
+For a complete high performance solution to set operations for Arrays and Sets with a standardized API, plus the addition of the standard map/reduce/find operations to Set see:
+
+- https://github.com/anywhichway/array-set-ops
 
 # Installing
 
@@ -86,6 +95,10 @@ index.js |   98.13 |    85.24 |     100 |   98.13 | 153-155
 
 
 # Updates (reverse chronological order)
+
+2022-02-22 v2.0.2 - Updated documentation.
+
+2022-02-15 v2.0.1 - Updated documentation.
 
 2022-02-15 v2.0.0 - Updated to use iterable protocol. More than 10x faster overall.
 

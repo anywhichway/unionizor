@@ -1,6 +1,6 @@
 {
   "name": "unionizor",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "Superfast union supporting Arrays and Iterables containing primitives or objects. In the age of big data, you need it.",
   "type": "module",
   "source": "./src/index.js",
